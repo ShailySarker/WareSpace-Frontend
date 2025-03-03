@@ -27,11 +27,10 @@ const Banner = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Auto-play effect
     useEffect(() => {
         const interval = setInterval(() => {
             goNext();
-        }, 3000); // Change image every 3 seconds
+        }, 3000); 
         return () => clearInterval(interval);
     }, [currentIndex]);
 
@@ -53,8 +52,7 @@ const Banner = () => {
         const firstname = form?.firstname?.value;
         const lastname = form?.lastname?.value;
         const email = form?.email?.value;
-        const phone1 = form?.phone1?.value;
-        // const phone2 = form?.phone2?.value;
+        const phone = form?.phone?.value;
 
         // validation
         if (firstname?.length < 3) {
@@ -78,13 +76,13 @@ const Banner = () => {
             alert("Email is not in the correct format!");
             return;
         }
-        if ((phone1?.length !== 10)) {
+        if ((phone?.length !== 10)) {
             alert("Phone number must be 10 digit!");
             return;
         }
 
-        if (firstname && lastname && email && phone1) {
-            console.log("-----Submit Info----", "First Name: ", firstname, "Last Name: ", lastname, "Email: ", email, "Phone: ", phone1);
+        if (firstname && lastname && email && phone) {
+            console.log("-----Submit Info----", "First Name: ", firstname, "Last Name: ", lastname, "Email: ", email, "Phone: ", phone);
             alert("The form is submitted successfully!");
             form.reset();
         } else {
@@ -97,21 +95,18 @@ const Banner = () => {
             <img className='lg:block hidden h-screen w-full' src={banner1} alt="banner1" />
             <div className='lg:hidden visible'>
                 <div className="w-full relative">
-                    {/* Main Auto-playing Banner */}
                     <div className="relative">
                         <img
                             src={banners[currentIndex]}
                             alt={`banner ${currentIndex + 1}`}
-                            className="w-full md:h-96 h-64 object-cover rounded-lg shadow-lg transition-all duration-500"
+                            className="w-full md:h-96 h-64 object-cover shadow-lg transition-all duration-500"
                         />
-                        {/* Left Arrow */}
                         <button
                             onClick={goPrev}
                             className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white md:p-3 p-[10px] rounded-full shadow-md"
                         >
                             <FaChevronLeft className="text-[#00AA6C] md:text-base text-sm" />
                         </button>
-                        {/* Right Arrow */}
                         <button
                             onClick={goNext}
                             className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white md:p-3 p-[10px] rounded-full shadow-md"
@@ -120,12 +115,10 @@ const Banner = () => {
                         </button>
                     </div>
 
-                    {/* Static Thumbnail Images */}
                     <div className="flex justify-center relative md:bottom-14 bottom-12 md:-mb-20 -mb-16 md:gap-5 gap-2">
                         {banners
                             .filter((_, index) => index !== currentIndex) // Exclude the current banner
                             .map((banner, index) => {
-                                // Adjust the index to match original array
                                 const originalIndex = banners.indexOf(banner);
 
                                 return (
@@ -213,8 +206,7 @@ const Banner = () => {
                             <input className='placeholder:text-[#00000066] lg:placeholder:font-medium xl:text-base/none lg:text-[15px]/none md:text-[15px]/none text-[14px]/none xl:placeholder:text-base/none lg:placeholder:text-[15px]/none md:placeholder:text-[15px]/none placeholder:text-[14px]/none border-2 border-[#DCDCDC] rounded-md xl:py-2 lg:py-[7px] py-[6px] xl:px-4 lg:px-3 md:px-4 px-3 w-full' type="text" name="firstname" placeholder='First name here' required />
                             <input className='placeholder:text-[#00000066] lg:placeholder:font-medium xl:text-base/none lg:text-[15px]/none md:text-[15px]/none text-[14px]/none xl:placeholder:text-base/none lg:placeholder:text-[15px]/none md:placeholder:text-[15px]/none placeholder:text-[14px]/none border-2 border-[#DCDCDC] rounded-md xl:py-2 lg:py-[7px] py-[6px] xl:px-4 lg:px-3 md:px-4 px-3 w-full' type="text" name="lastname" placeholder='Last name here' required />
                             <input className='placeholder:text-[#00000066] lg:placeholder:font-medium xl:text-base/none lg:text-[15px]/none md:text-[15px]/none text-[14px]/none xl:placeholder:text-base/none lg:placeholder:text-[15px]/none md:placeholder:text-[15px]/none placeholder:text-[14px]/none border-2 border-[#DCDCDC] rounded-md xl:py-2 lg:py-[7px] py-[6px] xl:px-4 lg:px-3 md:px-4 px-3 w-full' type="email" name="email" placeholder='Email here' required />
-                            <input className='placeholder:text-[#00000066] lg:placeholder:font-medium xl:text-base/none lg:text-[15px]/none md:text-[15px]/none text-[14px]/none xl:placeholder:text-base/none lg:placeholder:text-[15px]/none md:placeholder:text-[15px]/none placeholder:text-[14px]/none border-2 border-[#DCDCDC] rounded-md xl:py-2 lg:py-[7px] py-[6px] xl:px-4 lg:px-3 md:px-4 px-3 w-full' type="number" name="phone1" placeholder='Phone number (Just so we can remind you of your appt)' required />
-                            {/* <input className='lg:hidden visible placeholder:text-[#00000066] lg:placeholder:font-medium xl:text-base/none lg:text-[15px]/none md:text-[15px]/none text-[14px]/none xl:placeholder:text-base/none lg:placeholder:text-[15px]/none md:placeholder:text-[15px]/none placeholder:text-[14px]/none border-2 border-[#DCDCDC] rounded-md xl:py-2 lg:py-[7px] py-[6px] xl:px-4 lg:px-3 md:px-4 px-3 w-full' type="number" name="phone2" placeholder='Phone number' required /> */}
+                            <input className='placeholder:text-[#00000066] lg:placeholder:font-medium xl:text-base/none lg:text-[15px]/none md:text-[15px]/none text-[14px]/none xl:placeholder:text-base/none lg:placeholder:text-[15px]/none md:placeholder:text-[15px]/none placeholder:text-[14px]/none border-2 border-[#DCDCDC] rounded-md xl:py-2 lg:py-[7px] py-[6px] xl:px-4 lg:px-3 md:px-4 px-3 w-full' type="number" name="phone" placeholder='Phone number (Just so we can remind you of your appt)' required />
                             <button className='xl:mt-5 lg:mt-3 md:mt-5 mt-3 flex items-center xl:gap-2 gap-[6px] font-semibold bg-[#00AA6C] text-white justify-center rounded-md xl:py-3 lg:py-[10px] py-2'>
                                 <span className='xl:text-base/none lg:text-[15px]/none'>Step 2: Find a time that works</span>
                                 <FaAngleRight />
