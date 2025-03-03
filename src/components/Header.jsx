@@ -1,5 +1,5 @@
 import React from 'react';
-import companyLogo from "../assets/Image/Header_companyLogo.png"
+import companyLogo from "../assets/Images/Shared/Header_companyLogo.png"
 import { BsTelephoneFill } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
 const Header = () => {

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import companyLogo from "../../assets/Image/LandingPage_companyLogo.png";
+import companyLogo from "../../assets/Images/LandingPage/LandingPage_companyLogo.png";
 const LandingPage = () => {
     const navigate = useNavigate();
 
