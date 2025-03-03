@@ -82,7 +82,7 @@ const Banner = () => {
         }
 
         if (firstname && lastname && email && phone) {
-            console.log("-----Submit Info----", "First Name: ", firstname, "Last Name: ", lastname, "Email: ", email, "Phone: ", phone);
+            console.log("-----Submit Info----", `First Name: ${firstname}`, `Last Name: ${lastname}`, `Email: ${email}`, `Phone: ${phone}`);
             alert("The form is submitted successfully!");
             form.reset();
         } else {
